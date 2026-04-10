@@ -1,0 +1,18 @@
+# -*- mode: conf -*-
+
+[Unit]
+Description=Prometheus exporter for jolokia metrics
+Documentation=https://github.com/jaxxstorm/jolokia_exporter
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/default/jolokia_exporter
+User=prometheus
+ExecStart=/usr/bin/jolokia_exporter $JOLOKIA_EXPORTER_OPTS
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5s
+
+
+[Install]
+WantedBy=multi-user.target

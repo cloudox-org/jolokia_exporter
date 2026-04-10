@@ -2,14 +2,14 @@
 %global user prometheus
 %global group prometheus
 
-Name: artifactory_exporter
-Version: 1.16.1
-Release: 1%{?dist}
-Summary: Prometheus exporter for JFrog Artifactory stats.
-License: ASL 2.0
-URL:     https://github.com/peimanja/artifactory_exporter
+Name: jolokia_exporter
+Version: 1.3.1
+Release: 2%{?dist}
+Summary: Prometheus exporter for jolokia metrics
+License: MIT
+URL:     https://github.com/jaxxstorm/jolokia_exporter
 
-Source0: https://github.com/peimanja/artifactory_exporter/releases/download/v%{version}/%{name}-v%{version}-linux-amd64.tar.gz
+Source0: https://github.com/jaxxstorm/jolokia_exporter/releases/download/%{version}/%{name}_%{version}_Linux_x86_64.tar.gz
 Source1: %{name}.unit
 Source2: %{name}.default
 
@@ -17,10 +17,10 @@ Source2: %{name}.default
 Requires(pre): shadow-utils
 
 %description
-Collects metrics about an Artifactory system
+Export jolokia metrics to Prometheus.
 
 %prep
-%setup -q -D -c %{name}-v%{version}-linux-amd64
+%setup -q -D -c %{name}_%{version}
 
 %build
 /bin/true
@@ -54,5 +54,5 @@ exit 0
 %{_unitdir}/%{name}.service
 
 %changelog
-* Thu Apr 02 2026 Ivan Garcia <igarcia@cloudox.org> - 1.16.1
-- Initial packaging for the 1.16.1 branch
+* Fri Apr 10 2026 Ivan Garcia <igarcia@cloudox.org> - 1.3.1
+- Initial packaging for the 1.13.1 branch
